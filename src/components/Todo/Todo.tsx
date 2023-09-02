@@ -29,7 +29,7 @@ const Todo: React.FC<TodoProps> = ({ todo }) => {
 		<TodoContainer>
 			<TodoBackground>
 				<WrapperUpper>
-					<TodoCheckbox type="checkbox" checked={todo.completed} />
+					<TodoCheckbox type="checkbox" defaultChecked={todo.completed} />
 					<TodoTitle>{todo.title}</TodoTitle>
 				</WrapperUpper>
 				<WrapperTimes>

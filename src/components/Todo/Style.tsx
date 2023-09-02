@@ -5,13 +5,14 @@ export const TodoContainer = styled.div`
 	flex-direction: column;
 	align-items: flex-start;
 	padding: 4px;
+	width: 263px;
 	border-radius: 7px;
 	background: #f4f8ff;
 `;
 
 export const TodoBackground = styled.div`
 	padding: 10px;
-	width: 100%;
+	width: 255px;
 	border-radius: 7px;
 	background: var(--neuteral-white, #fff);
 	box-shadow:
@@ -93,13 +94,11 @@ export const TodoTag = styled.div<{
 	justify-content: center;
 	padding: 0 6px;
 	border-radius: 4px;
-
 	font-size: 12px;
 	font-weight: 600;
 	line-height: 140%;
-
-	background-color: ${(props) => props.backgroundColor};
 	color: ${(props) => props.textColor};
+	background-color: ${(props) => props.backgroundColor};
 `;
 
 export const WrapperLower = styled.div`
