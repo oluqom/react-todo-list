@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import {
 	TodoListContainer,
@@ -20,21 +20,47 @@ type TodoItem = {
 
 const TodoList: React.FC = () => {
 	const [todos, setTodos] = useState<TodoItem[]>([]);
+	const [page, setPage] = useState<number>(1);
+	const [loading, setLoading] = useState<boolean>(false);
+	const observer = useRef<IntersectionObserver>();
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
+				setLoading(true);
 				const response = await axios.get(
-					"https://jsonplaceholder.typicode.com/todos",
+					`https://jsonplaceholder.typicode.com/todos?_page=${page}`,
 				);
-				setTodos(response.data);
+				setTodos((prevTodos) => [...prevTodos, ...response.data]);
+				setLoading(false);
 			} catch (error) {
 				console.error("Error:", error);
 			}
 		};
-
 		fetchData();
-	}, []);
+	}, [page]);
+
+	useEffect(() => {
+		if (loading) return;
+
+		observer.current = new IntersectionObserver((entries) => {
+			if (entries[0].isIntersecting) {
+				setPage((prevPage) => prevPage + 1);
+			}
+		});
+
+		const element = document.querySelector("#observer") as Element;
+
+		if (observer.current) {
+			observer.current.observe(element);
+		}
+
+		return () => {
+			if (observer.current) {
+				observer.current.disconnect();
+			}
+		};
+	}, [loading]);
 
 	return (
 		<>
@@ -60,9 +86,10 @@ const TodoList: React.FC = () => {
 					</WrapperButtons>
 				</WrapperUpper>
 				<TodoItems>
-					{todos.map((todo: TodoItem) => (
-						<Todo key={todo.id} todo={todo} />
+					{todos.map((todo: TodoItem, index: number) => (
+						<Todo key={`${todo.id}-${index}`} todo={todo} />
 					))}
+					<div id="observer" style={{ height: "10px" }}></div>
 				</TodoItems>
 			</TodoListContainer>
 		</>
