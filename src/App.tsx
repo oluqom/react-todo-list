@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Segoe UI';
     font-style: normal;
     font-weight: 600;
-    src: url('/fonts/segoe-ui-bold.woff') format('woff'),
+    src: url('/fonts/segoe-ui-semibold.woff') format('woff'),
   }
 
   body {
