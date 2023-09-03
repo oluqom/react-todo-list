@@ -17,6 +17,18 @@ const GlobalStyles = createGlobalStyle`
     src: url('/fonts/segoe-ui-semibold.woff') format('woff'),
   }
 
+	*,
+	*::after,
+	*::before {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	button {
+		border: 0;
+	}
+
   body {
     font-family: 'Segoe UI', Arial, sans-serif;
   }

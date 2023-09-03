@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const TodoListContainer = styled.div`
 	padding: 20px 0;
-	width: min-content;
+	width: max-content;
 	height: 100vh;
 	overflow-y: scroll;
 	margin: 0 auto;

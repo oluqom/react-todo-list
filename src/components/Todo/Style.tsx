@@ -42,10 +42,6 @@ export const TodoCheckbox = styled.input`
 
 export const TodoTitle = styled.h3`
 	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
-	overflow: hidden;
-	text-overflow: ellipsis;
 	text-indent: 22px;
 	font-size: 14px;
 	font-weight: 600;
@@ -69,7 +65,7 @@ export const TodoTime = styled.span`
 `;
 
 export const TodoDescription = styled.p`
-	margin: 0 0 10px 0;
+	margin: 0 0 8px 0;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -89,16 +85,25 @@ export const TodoTag = styled.div<{
 	backgroundColor: string;
 	textColor: string;
 }>`
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	height: 20px;
 	padding: 0 6px;
-	border-radius: 4px;
+	border-radius: 5px;
 	font-size: 12px;
 	font-weight: 600;
 	line-height: 140%;
 	color: ${(props) => props.textColor};
 	background-color: ${(props) => props.backgroundColor};
+`;
+
+export const AbsoluteTag = styled.div`
+	position: absolute;
+	top: 0;
+	right: -5px;
+	bottom: 0;
 `;
 
 export const WrapperLower = styled.div`

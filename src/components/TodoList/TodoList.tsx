@@ -14,7 +14,6 @@ import Todo from "../Todo/Todo.tsx";
 
 type TodoItem = {
 	id: number;
-	title: string;
 	completed: boolean;
 };
 
