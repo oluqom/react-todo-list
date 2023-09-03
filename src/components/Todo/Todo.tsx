@@ -27,6 +27,22 @@ type TodoItem = {
 
 const Todo: React.FC<TodoProps> = ({ todo }) => {
 	const randomDescription = faker.lorem.sentence();
+	const startDate = formatDateTime(
+		faker.date.between("2021-10-01", "2021-10-31"),
+	);
+	const endDate = formatDateTime(
+		faker.date.between("2021-10-01", "2021-10-31"),
+	);
+
+	function formatDateTime(dateTime: Date): string {
+		return dateTime.toLocaleString("en-US", {
+			month: "short",
+			day: "numeric",
+			hour: "numeric",
+			minute: "numeric",
+			hour12: true,
+		});
+	}
 
 	return (
 		<TodoContainer>
@@ -39,8 +55,8 @@ const Todo: React.FC<TodoProps> = ({ todo }) => {
 					</TodoTitle>
 				</WrapperUpper>
 				<WrapperTimes>
-					<TodoTime>Oct 12, 01:00 PM</TodoTime>
-					<TodoTime>Oct 01, 02:00 PM</TodoTime>
+					<TodoTime>{startDate}</TodoTime>
+					<TodoTime>{endDate}</TodoTime>
 				</WrapperTimes>
 				<TodoDescription>{randomDescription}</TodoDescription>
 				<WrapperLower>
